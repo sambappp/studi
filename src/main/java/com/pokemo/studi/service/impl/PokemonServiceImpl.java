@@ -27,7 +27,8 @@ public class PokemonServiceImpl implements PokemonService {
 
     @Override
     public void updatePokemon(String pokemonName, Pokemon pokemon) {
-
+        this.deletePokemon(pokemonName);
+        maListe.add(pokemon);
     }
 
     @Override
