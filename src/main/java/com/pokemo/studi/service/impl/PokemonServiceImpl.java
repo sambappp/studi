@@ -33,7 +33,7 @@ public class PokemonServiceImpl implements PokemonService {
 
     @Override
     public void createPokemon(Pokemon pokemon) {
-
+        maListe.add(pokemon);
     }
 
     @Override
