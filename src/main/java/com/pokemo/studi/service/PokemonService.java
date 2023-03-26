@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface PokemonService {
     List<Pokemon> getAllpokemon();
-    List<Pokemon> getAllPokemonByName(String name);
-    void updatePokemon(String pokemonName, Pokemon pokemon);
+    Pokemon getPokemonById(Long id);
+    void updatePokemon(Long id, Pokemon pokemon);
     void createPokemon(Pokemon pokemon);
-    void deletePokemon(String name);
+    void deletePokemon(Long id);
 
 }

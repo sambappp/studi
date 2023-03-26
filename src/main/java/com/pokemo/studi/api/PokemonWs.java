@@ -19,9 +19,9 @@ public class PokemonWs {
         return service.getAllpokemon();
     }
 
-    @GetMapping("{name}")
-    public List<Pokemon> getAllPokemonbyName(@PathVariable(name = "name")String nom){
-        return service.getAllPokemonByName(nom);
+    @GetMapping("{id}")
+    public Pokemon getAllPokemonbyId(@PathVariable(name = "id")Long id){
+        return service.getPokemonById(id);
     }
 
 
@@ -31,15 +31,15 @@ public class PokemonWs {
         service.createPokemon(pokemon);
     }
 
-    @PutMapping("{name}")
-    public void updatePokemon(@PathVariable(name = "name")String nom,
+    @PutMapping("{id}")
+    public void updatePokemon(@PathVariable(name = "id")Long id,
                               @RequestBody Pokemon pokemon){
-        service.updatePokemon(nom,pokemon);
+        service.updatePokemon(id,pokemon);
     }
 
     @DeleteMapping("{name}")
-    public void deletePokemon(@PathVariable(name = "name")String nom){
-        service.deletePokemon(nom);
+    public void deletePokemon(@PathVariable(name = "name")long id){
+        service.deletePokemon(id);
     }
 
 }
