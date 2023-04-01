@@ -4,19 +4,27 @@ import com.pokemo.studi.pojo.Pokemon;
 
 import com.pokemo.studi.service.PokemonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-@RestController //permet de dire a spring que tout le monde peut avoir accés
+@Controller //permet de dire a spring que tout le monde peut avoir accés
 // url d'accès à mon site
 @RequestMapping(ApiRegistration.REST_PREFIX + ApiRegistration.REST_POKEMON)
 public class PokemonWs {
     @Autowired
     private PokemonService service;
     @GetMapping
-    public List<Pokemon> getAllPokemon(){
-        return service.getAllpokemon();
+    public ModelAndView getAllPokemon(){
+        ModelAndView modelAndView = new ModelAndView();
+        //TODO
+        modelAndView.setViewName("index.html");
+        modelAndView.addObject("test","success");
+
+        return modelAndView;
+        //return service.getAllpokemon();
     }
 
     @GetMapping("{id}")

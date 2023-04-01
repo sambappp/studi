@@ -4,3 +4,13 @@ spring:
       matching-strategy:
         ant_path_matcher
 
+  Datasource:
+    url: jdbc:postgresql://localhost:5432/pokedex
+    username: sk
+    password: Boissy94479!
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+

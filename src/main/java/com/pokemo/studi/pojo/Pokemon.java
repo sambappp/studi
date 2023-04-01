@@ -2,7 +2,10 @@ package com.pokemo.studi.pojo;
 
 import jakarta.persistence.*;
 
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
+
 @Entity
 @Table(name="Pokemon")
 public class Pokemon {
@@ -14,11 +17,23 @@ public class Pokemon {
     @Column(name="pokemon_id",updatable = false)
     private Long id;
     private String surname;
-    @ManyToOne
-    @JoinColumn(name="pokedex_id", nullable = false)
-    private Pokedex pokedex;
-    @OneToMany(mappedBy = "pokemon")
-    private List<Capacite> capacitesList;
+    //@ManyToOne
+    //@JoinColumn(name="pokedex_id", nullable = false)
+    //private Pokedex pokedex;
+    //@OneToMany(mappedBy = "pokemon")
+    //private List<Capacite> capacitesList;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "pokemon_id")
+    private Set<Capacite> capacites = new LinkedHashSet<>();
+
+    public Set<Capacite> getCapacites() {
+        return capacites;
+    }
+
+    public void setCapacites(Set<Capacite> capacites) {
+        this.capacites = capacites;
+    }
 
     public Long getId() {
         return id;
@@ -42,11 +57,11 @@ public class Pokemon {
     public Pokemon(Long id, String surname, List<Capacite> capacitesList) {
         this.id = id;
         this.surname = surname;
-        this.capacitesList = capacitesList;
+
     }
 
     public Pokemon(String surname, List<Capacite> capacitesList) {
         this.surname = surname;
-        this.capacitesList = capacitesList;
+
     }
 }

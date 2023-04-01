@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class PokemonServiceImpl implements PokemonService {
-    private static List<Pokemon> maListe = new ArrayList<>();
+    //private static List<Pokemon> maListe = new ArrayList<>();
     private final PokemonRepository pokemonRepository;
 
     public PokemonServiceImpl(PokemonRepository pokemonRepository) {
@@ -24,7 +24,7 @@ public class PokemonServiceImpl implements PokemonService {
     }
     @Override
     public List<Pokemon> getAllpokemon() {
-        return maListe;
+        return pokemonRepository.findAll();
     }
 
     @Override
@@ -43,7 +43,7 @@ public class PokemonServiceImpl implements PokemonService {
 
     @Override
     public void createPokemon(Pokemon pokemon) {
-        maListe.add(pokemon);
+        pokemonRepository.save(pokemon);
     }
 
     @Override

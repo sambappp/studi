@@ -1,5 +1,6 @@
 package com.pokemo.studi.pojo;
 
+import com.pokemo.studi.constraint.CapaciteConstraint;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,12 +12,13 @@ public class Capacite {
             generator = "capacite_seq")
     @Column(name="capacite_id",updatable = false)
     private long id;
+    @CapaciteConstraint
     private String libelle;
     public Long puissance;
 
-    @ManyToOne
-    @JoinColumn(name="pokemon_id", nullable = false)
-    private Pokemon pokemon;
+    //@ManyToOne
+    //@JoinColumn(name="pokemon_id", nullable = false)
+    //private Pokemon pokemon;
 
     public long getId() {
         return id;
